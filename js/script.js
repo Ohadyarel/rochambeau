@@ -1,8 +1,11 @@
 $(document).ready(function(){
 	$(".click-me").click(function(e){
 		e.preventDefault();
-		$(".shadow").css('display', 'block');
-		$(".modal").css('display', 'block');
+		$(".shadow").fadeIn(400, function(){
+			$(".modal").fadeIn(200, function(){
+				$("#result").slideDown(300)
+			});
+		});
 		var userChoice = $(this).attr("id");
 		showUser(userChoice);
 		picker();
@@ -13,6 +16,7 @@ $(document).ready(function(){
 	$(".shadow").click(function() {
 		$(".shadow").css('display', 'none');
 		$(".modal").css('display', 'none');
+		$("#result").css('display', 'none');
 		$("#win-count").text(wins);
 		$("#lose-count").text(loses);
 		$("#user-weapon").removeClass();
@@ -24,6 +28,7 @@ $(document).ready(function(){
 	$("#exit").click(function() {
 		$(".shadow").css('display', 'none');
 		$(".modal").css('display', 'none');
+		$("#result").css('display', 'none');
 		$("#win-count").text(wins);
 		$("#lose-count").text(loses);
 		$("#user-weapon").removeClass();
